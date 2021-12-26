@@ -29,22 +29,22 @@ router.get("/:id", (req, res, next) => {
 });
 
 //UPDATE user by id - not working
-router.put("/:id", (req, res, next) => {
-  let id = req.params.id;
-  // let id = {_id: req.params.id}
-  console.log("USER ID:", id);
-  let user = {
-    name: req.body.name,
-    password: req.body.password,
-    email: req.body.email,
-  };
-  // let user = req.body
-  console.log("USER OBJECT", user);
-  User.findByIdAndUpdate(id, user, (err, user) => {
-    if (err) throw err;
-    res.send("Sucessfully Updated User!");
-  });
-});
+// router.put("/:id", (req, res, next) => {
+//   let id = req.params.id;
+//   // let id = {_id: req.params.id}
+//   console.log("USER ID:", id);
+//   let user = {
+//     name: req.body.name,
+//     password: req.body.password,
+//     email: req.body.email,
+//   };
+//   // let user = req.body
+//   console.log("USER OBJECT", user);
+//   User.findByIdAndUpdate(id, user, (err, user) => {
+//     if (err) throw err;
+//     res.send("Sucessfully Updated User!");
+//   });
+// });
 
 // POST new user - not working
 router.post("/", async (req, res, next) => {
@@ -70,17 +70,17 @@ router.post("/", async (req, res, next) => {
 });
 
 // DELTE user by id - works
-router.delete("/:id", (req, res, next) => {
-  let id = req.params.id;
-  User.findByIdAndRemove(id)
-    .exec()
-    .then((user) => {
-      if (!user) {
-        res.status(404).end();
-      }
-      res.status(204).send(`Successfully removed User: ${id}`);
-    })
-    .catch((err) => next(err));
-});
+// router.delete("/:id", (req, res, next) => {
+//   let id = req.params.id;
+//   User.findByIdAndRemove(id)
+//     .exec()
+//     .then((user) => {
+//       if (!user) {
+//         res.status(404).end();
+//       }
+//       res.status(204).send(`Successfully removed User: ${id}`);
+//     })
+//     .catch((err) => next(err));
+// });
 
 export default router;

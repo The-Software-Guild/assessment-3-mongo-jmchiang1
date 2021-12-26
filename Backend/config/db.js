@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import user from '../models/usersModel.js'
+import bug from '../models/bugsModel.js'
 
 const connectDB = async () => {
     try {
