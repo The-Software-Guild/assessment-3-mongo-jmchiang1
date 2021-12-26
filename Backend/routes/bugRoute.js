@@ -1,9 +1,9 @@
 // import { getUsers, getUserById, createNewUser, updateUserById, deleteUserByID } from "../controllers/userController.js";
 // const Mongoose = require("mongoose");
-import express from "express";
-import Mongoose from "mongoose";
+const express = require("express");
+const Mongoose = require("mongoose");
 const router = express.Router();
-import Bugs from "../models/bugsModel.js";
+const Bugs = require("../models/bugsModel.js");
 
 // GET all bugs 
 router.get("/", (req, res, next) => {
@@ -81,4 +81,4 @@ router.delete("/:id", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-export default router;
+module.exports = router;

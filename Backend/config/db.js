@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-import user from '../models/usersModel.js'
-import bug from '../models/bugsModel.js'
+const mongoose = require("mongoose");
+const user = require('../models/usersModel.js');
+const bug = require('../models/bugsModel.js');
 
 const connectDB = async () => {
     try {
@@ -17,5 +17,5 @@ const connectDB = async () => {
     }
 }
 
-export default connectDB
+module.exports = connectDB;
 

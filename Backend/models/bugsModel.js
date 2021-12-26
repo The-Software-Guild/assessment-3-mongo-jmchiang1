@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const bugSchema = mongoose.Schema({
   title: {
@@ -12,18 +12,16 @@ const bugSchema = mongoose.Schema({
     type: Number,
     default: new Date().getTime(),
   },
-  date: {
-    created: {
-      type: Date,
-      default: Date.now,
-    },
-  },
+  // date: {
+  //   created: {
+  //     type: Date,
+  //     default: Date.now,
+  //   },
+  // },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
 });
 
-const Bug = mongoose.model("Bug", bugSchema);
-
-export default Bug;
+module.exports = mongoose.model('bug', bugSchema);

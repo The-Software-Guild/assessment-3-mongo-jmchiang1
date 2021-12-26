@@ -8,7 +8,7 @@ in via your PR or assets folder.
 ## Step-2: Backend Routes & ORM
 - [ ] Using Node.js, Express.js, Mongoose, MongoDB, and Postman create all 6 of your CRUD routes
     - GET, GETONE, PUT/PATCH, POST, DELETE, QUERYSTRING
-- [ ] You should have two collections: Users & Bugs
+- [x] You should have two collections: Users & Bugs
 - [ ] Screenshot, videocast/screen-record, or gif these routes working and include them in your PR or assets folder
 
 ## Step-3: Consuming Your API Client Side

@@ -1,7 +1,9 @@
-import connectDB from './Backend/config/db.js'
-import userRoutes from './Backend/routes/userRoute.js'
-import express from 'express'
-import dotenv  from 'dotenv'
+const connectDB = require('./Backend/config/db.js');
+const express = require('express');
+const dotenv  = require('dotenv');
+const userRoutes = require('./Backend/routes/userRoute.js');
+const bugRoutes = require('./Backend/routes/bugRoute.js');
+const authRoutes = require('./Backend/routes/authRoute.js');
 
 //connect database
 connectDB()
@@ -14,6 +16,7 @@ const app = express()
 //Creating API for user
 app.use('/users', userRoutes)
 app.use('/bugs', bugRoutes)
+app.use('/auth', authRoutes)
 
 const PORT = process.env.PORT || 5000
 
