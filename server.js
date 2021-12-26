@@ -12,7 +12,7 @@ dotenv.config()
 const app = express()
 
 //Creating API for user
-app.use('/api/users', userRoutes)
+app.use('/users', userRoutes)
 
 const PORT = process.env.PORT || 5000
 
