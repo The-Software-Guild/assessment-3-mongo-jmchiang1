@@ -5,20 +5,32 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const { check, validationResult } = require("express-validator");
 
-const User = require('../models/User');
-
-// Register route.
-const express = require("express");
-const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const config = require("config");
-const { check, validationResult } = require("express-validator");
-
 // require User model
 const User = require("../models/User");
 
-// POST route with "api/users" endpoint that registers a user. 
+//GET ROUTE: get all users
+router.get("/", async (req, res) => {
+ await User.find({}, (err, users) => {
+      if (err){
+          res.status(400).json({message: 'There are no users' })
+        }
+        res.json(users);
+    });
+});
+
+//GET ROUTE: get single user by id
+router.get("/:id", async (req, res, next) => {
+    User.findById(req.params.id)
+    .then(user => {
+        if (!user){
+            res.status(404).end()
+        }
+        res.status(200).json(user);
+    })
+    .catch(err => next(err));
+})
+
+// POST ROUTE: registers a new user - works
 router.post(
   "/",
   [
@@ -44,10 +56,10 @@ router.post(
       // Returns an error if the user is already registered.
       if (user) {
         return res.status(400).json({
-          msg: "User already exists. Please choose another email address.",
+          message: "User already exists. Please choose another email address.",
         });
       }
-      //create new user with name, email, and password
+      //create new user model with name, email, and password
       user = new User({
         name,
         email,
@@ -59,7 +71,7 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
       // Saves password in db
       await user.save();
-      // Creates the payload with user id 
+      // Creates the payload with user id
       const payload = {
         user: {
           id: user.id,
@@ -70,7 +82,7 @@ router.post(
         payload,
         config.get("jwtSecret"),
         {
-          expiresIn: 3600,
+          expiresIn: "1h",
         },
         // Responds with the token.
         (err, token) => {
@@ -80,7 +92,7 @@ router.post(
       );
     } catch (err) {
       console.error(err.message);
-      res.status(500).send("Server error.");    //server error
+      res.status(500).send("Server error."); //server error
     }
   }
 );
