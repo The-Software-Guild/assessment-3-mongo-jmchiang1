@@ -6,10 +6,10 @@ directories, external node modules, routes, programs you will need ... etc. Scre
 in via your PR or assets folder.
 
 ## Step-2: Backend Routes & ORM
-- [ ] Using Node.js, Express.js, Mongoose, MongoDB, and Postman create all 6 of your CRUD routes
-    - GET, GETONE, PUT/PATCH, POST, DELETE, QUERYSTRING
+- [x] Using Node.js, Express.js, Mongoose, MongoDB, and Postman create all 6 of your CRUD routes
+    - GET, GETONE, PUT/PATCH, POST, DELETE, and QUERYSTRING?
 - [x] You should have two collections: Users & Bugs
-- [ ] Screenshot, videocast/screen-record, or gif these routes working and include them in your PR or assets folder
+- [x] Screenshot, videocast/screen-record, or gif these routes working and include them in your PR or assets folder
 
 ## Step-3: Consuming Your API Client Side
 Within a Client folder create a font end application using React.js that allows for:
