@@ -1,4 +1,4 @@
-import { GET_BUGS, ADD_BUG, DELETE_BUG, UPDATE_BUG } from "../types";
+import { GET_BUGS, ADD_BUG, DELETE_BUG, UPDATE_BUG, BUG_ERROR } from "../types";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -27,6 +27,10 @@ const reducer = (state, action) => {
           bug.id === action.payload._id ? action.payload : bug
         ),
         loading: false,
+      };
+      case BUG_ERROR: 
+      return {
+          ...state, error: action.payload
       };
       default: return state;
   }
