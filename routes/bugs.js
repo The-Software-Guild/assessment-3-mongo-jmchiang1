@@ -6,7 +6,7 @@ const { check, validationResult } = require("express-validator");
 const User = require("../models/User");
 const Bug = require("../models/Bug");
 
-//GET route: get all bugs associated with authenticated user id
+//GET route: get all bugs associated with authenticated user id - WORKS
 router.get("/", auth, async (req, res) => {
   try {
     const bugs = await Bug.find({ user: req.user.id }).sort({ date: -1 });
@@ -17,8 +17,19 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-//POST route: create new bug for authenticated user 
-router.post("/", [auth, [check("title", "Title is required.").not().isEmpty()]], async (req, res) => {
+//GET route: get bug by id - WORKS
+    router.get("/", auth, async (req, res) => {
+      try {
+        const singleBug = await Bug.find({ user: req.user.id }).sort({ date: -1 });
+        res.json(singleBug);
+      } catch (err) {
+        console.log(err);
+        res.status(500).send("SERVER ERROR: GET SINGLE BUGS");
+      }
+    });
+
+//POST route: create new bug for authenticated user - WORKS
+router.post("/", [ auth, [check("title", "Title is required.").not().isEmpty()]], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -29,7 +40,7 @@ router.post("/", [auth, [check("title", "Title is required.").not().isEmpty()]],
       const newBug = new Bug({  //new bug model 
         title,
         description,
-        user: req.user.id,
+        // user: req.user.id,
       });
 
       const bug = await newBug.save();  //save bug 
@@ -42,7 +53,7 @@ router.post("/", [auth, [check("title", "Title is required.").not().isEmpty()]],
   }
 );
 
-//PUT ROUTE: update existing bug by id
+//PUT ROUTE: update existing bug by id - WORKS
 router.put("/:id", auth, async (req, res) => {
     const { title, description } = req.body;
 
@@ -69,7 +80,7 @@ router.put("/:id", auth, async (req, res) => {
     }
 })
 
-//DELETE ROUTE: delete single bug by id
+//DELETE ROUTE: delete single bug by id - WORKS
 router.delete("/:id", auth, async (req, res) => {
     try {
         let id = req.params.id
@@ -77,7 +88,7 @@ router.delete("/:id", auth, async (req, res) => {
         if (!bug){
             res.status(404).json({ message: "Bug not found." });
         }
-        //bug-user id has to match user id 
+        // bug-user id has to match user id 
         if (Bug.user.toString() !== req.user.id){
             return res.status(401).json({ message: "User is not authorized/valid." });
         }
@@ -91,3 +102,8 @@ router.delete("/:id", auth, async (req, res) => {
 })
 
 module.exports = router;
+
+// {
+//     "title" : "BUG1",
+//     "description" : "this is a bug"
+// }

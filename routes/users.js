@@ -8,17 +8,18 @@ const { check, validationResult } = require("express-validator");
 // require User model
 const User = require("../models/User");
 
-//GET ROUTE: get all users
-router.get("/", async (req, res) => {
- await User.find({}, (err, users) => {
-      if (err){
-          res.status(400).json({message: 'There are no users' })
-        }
-        res.json(users);
-    });
-});
+//GET ROUTE: get all users - WORKS - need to be have successfull user sign in first 
+router.get('/', (req, res) => {
+    User.find({})
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.status(500).json({ success: false, msg: `Something went wrong. ${err}` });
+      });
+  });
 
-//GET ROUTE: get single user by id
+//GET ROUTE: get single user by id - WORKS - need to be have successfull user sign in first 
 router.get("/:id", async (req, res, next) => {
     User.findById(req.params.id)
     .then(user => {
@@ -98,3 +99,9 @@ router.post(
 );
 
 module.exports = router;
+
+// {
+//     "name" : "jon",
+//     "email" : "jonamon@gmail.com",
+//     "password" : "password"
+// }
