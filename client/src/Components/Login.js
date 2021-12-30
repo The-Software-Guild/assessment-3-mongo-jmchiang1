@@ -7,7 +7,7 @@ const Login = (props) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      //if authenticated, direct user to homepage
+      //if authenticated, direct user to homepage, which should have their bug info
       props.history.push("/");
     }
   }, [error, isAuthenticated, props.history]);
@@ -67,6 +67,7 @@ const Login = (props) => {
         </div>
         <input type="submit" value="Login" />
       </form>
+      <a href="/register">Don't have an account?</a>
     </div>
   );
 };
