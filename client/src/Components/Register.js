@@ -1,14 +1,21 @@
 import React, { useState, useContext, useEffect } from "react";
-import userContext from "./context/user/userContext"
+import AuthContext from "../context/auth/authContext";
 
 const Register = (props) => {
-  const RegisterContext = useContext(userContext);
-  const { register, error, isAuthenticated } = RegisterContext;
+  const authContext = useContext(AuthContext);
+  const { register, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push("/");
     }
+
+    if (error === "User already exists") {
+      window.alert(error, "danger");
+      clearErrors();
+    }
+
+    // eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
@@ -19,43 +26,37 @@ const Register = (props) => {
 
   const { name, email, password } = user;
 
-  const onChange = (
-    event
-  ) =>
+  const onChange = (e) =>
     setUser({
       ...user,
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     });
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (name === "" || email === "" || password === "") {
-      alert("Please complete all fields");
+      window.alert("Please complete all fields");
     } else {
-      register({
-        name,
-        email,
-        password,
-      });
+      register({name, email, password });
     }
   };
 
   return (
-    <div>
-      <h1>Register Here</h1>
+    <div className="container">
+      <h1>Register New Account</h1>
       <form onSubmit={onSubmit}>
-        <div className="name">
-          <label htmlFor="name">Name:</label>
+        <div>
+          <h2>Name</h2>
           <input
-            type="name"
+            type="text"
             name="name"
             value={name}
             onChange={onChange}
             required
           />
         </div>
-        <div className="email">
-          <label htmlFor="email">Email Address:</label>
+        <div>
+          <h2>Email Address (must be unique)</h2>
           <input
             type="email"
             name="email"
@@ -64,21 +65,21 @@ const Register = (props) => {
             required
           />
         </div>
-        <div className="password">
-          <label htmlFor="password">Password:</label>
+        <div>
+          <h2>Password (must be longer than 6 characters)</h2>
           <input
             type="password"
             name="password"
             value={password}
             onChange={onChange}
             required
+            minLength="6"
           />
         </div>
-        <input type="submit" value="Register" />
+        <button type="submit" value="Sign Up">Sign Up</button>
       </form>
-      <a href="/login">Already have an account?</a>
     </div>
-  );
+  )
 };
 
 export default Register;

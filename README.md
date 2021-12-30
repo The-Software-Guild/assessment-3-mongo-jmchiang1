@@ -30,13 +30,13 @@ Within a Client folder create a font end application using React.js that allows 
 - [x] Assignee
 
 - [ ] All Data created should be saved in MongoDB. And displayed in an INTERACTIVE table. I should be able to click on cells and interact with each bug
-by seeign more details, leaving notes, adjusting due date, etc, ...etc.
+by seeing more details, leaving notes, adjusting due date, etc, ...etc.
 - [ ] Build a programming logic that every bug should be resolve in 3 days, after third the day the unresolved bug should be highlighted.
 - [ ] Add one more field to show the leftover days to fix the bug (Total time is 3 days from the day bug is assigned).
 
 Step-4: Styling
-Make you entire application fully-styled and responsive per the past requirements.
+- [x] Make you entire application fully-styled and responsive per the past requirements.
 
-Make sure that our application is RESTfull, meaning status codes & error handlign included for all
+- [x] Make sure that our application is RESTfull, meaning status codes & error handlign included for all
 backend functionality along with verbose and UI friendly updates (red notice when soemthign is
 not added correctly, a note saying somethign was successfully deleted, ... etc)

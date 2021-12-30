@@ -1,52 +1,51 @@
 import React, { useState, useContext, useEffect } from "react";
-import userContext from "./context/user/userContext"
+import AuthContext from "../context/auth/authContext";
+import './CSS Styling/Login.css'
 
 const Login = (props) => {
-  const loginContext = useContext(userContext);
-  const { login, error, isAuthenticated } = loginContext;
+  const authContext = useContext(AuthContext);
+  const { login, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
-    if (isAuthenticated) {
-      //if authenticated, direct user to homepage, which should have their bug info
+    if (isAuthenticated) {  //if authenicated, push user to home page
       props.history.push("/");
     }
+
+    if (error === "Invalid Credentials") {
+      window.alert("Invalid Credentials");
+      clearErrors();
+    }
+
+    // eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);
 
-  const [user, setUser] = useState({
-    //intialize user email and password to empty
+  const [user, setUser] = useState({  //initalize email and password to empty string
     email: "",
     password: "",
   });
 
-  const { email, password } = user; //take out email and password
+  const { email, password } = user;
 
-  const onChange = (
-    event //state change function
-  ) =>
+  const onChange = (e) =>
     setUser({
       ...user,
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (email === "" || password === "") {
-      alert("Please complete all fields");
-    } else {
-      login({
-        //submit triggers login function with email and password
+      login({ //login user with email and password
         email,
         password,
       });
     }
-  };
 
   return (
-    <div>
-      <h1>Login Here</h1>
+    <div className="login-container">
+      <h1> Account Login </h1>
       <form onSubmit={onSubmit}>
         <div>
-          <label htmlFor="email">Email Address</label>
+          <h2>Email Address (must be unique)</h2>
           <input
             type="email"
             name="email"
@@ -56,7 +55,7 @@ const Login = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <h2>Password (must be longer than 6 characters)</h2>
           <input
             type="password"
             name="password"
@@ -65,10 +64,9 @@ const Login = (props) => {
             required
           />
         </div>
-        <input type="submit" value="Login" />
+      <button type="submit" value="Login">Login</button>
       </form>
-      <a href="/register">Don't have an account?</a>
-    </div>
+    </div> 
   );
 };
 

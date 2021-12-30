@@ -1,0 +1,17 @@
+.home-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.bugs {
+    text-align: left;
+}

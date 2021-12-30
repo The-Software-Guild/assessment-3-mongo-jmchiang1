@@ -1,13 +1,11 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const BugSchema = mongoose.Schema({
-  // The user is now part of the schema as each user has their own set of bugs.
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    // Refers to the users collection.
-    ref: "users",
+    ref: 'users',
   },
-  title: {
+  name: {
     type: String,
     required: true,
   },
@@ -15,10 +13,10 @@ const BugSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  time: {
+  date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
 });
 
-module.exports = mongoose.model("bug", BugSchema);
+module.exports = mongoose.model('bug', BugSchema);

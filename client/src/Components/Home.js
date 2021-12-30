@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react';
+import Bugs from './Bugs';
+import BugForm from './BugForm';
+import AuthContext from '../context/auth/authContext';
+import './CSS Styling/Home.css'
 
-function Home() {
-    return (
-        <div>
-            <h1>Hello this is the Home Page</h1>
-            <h1>Nothing to see here</h1>
-            <h1>Please log in or register to see more!</h1>
-        </div>
-    )
-}
 
-export default Home
+const Home = () => {
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    authContext.loadUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div className="home-container">
+      <div className="form">
+        <BugForm />
+      </div>
+      <div className="bugs">
+        <Bugs />
+      </div>
+    </div>
+  );
+};
+
+export default Home;
