@@ -1,39 +1,46 @@
 import { GET_BUGS, ADD_BUG, DELETE_BUG, UPDATE_BUG, BUG_ERROR } from "../types";
 
-const reducer = (state, action) => {
+const bugReducer = (state, action) => {
   switch (action.type) {
+
     case GET_BUGS:
-      return {
+      return {  //return current state
         ...state,
         bugs: action.payload,
         loading: false,
       };
+
     case ADD_BUG:
-      return {
+      return {  //return current state plus previous state
         ...state,
         bugs: [...state.bugs, action.payload],
         loading: false,
       };
+
     case DELETE_BUG:
-      return {
+      return {  //return state of bugs that arent equal to bug.id
         ...state,
         bugs: state.bugs.filter((bug) => bug.id !== action.payload),
         loading: false,
       };
+
     case UPDATE_BUG:
-      return {
+      return {  
         ...state,
         bugs: state.bugs.map((bug) =>
           bug.id === action.payload._id ? action.payload : bug
         ),
         loading: false,
       };
-      case BUG_ERROR: 
-      return {
-          ...state, error: action.payload
+
+    case BUG_ERROR:
+      return {  //return error
+        ...state,
+        error: action.payload,
       };
-      default: return state;
+    default:
+      return state;
   }
 };
 
-export default reducer
+export default bugReducer;

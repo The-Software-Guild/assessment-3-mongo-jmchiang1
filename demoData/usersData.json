@@ -1,0 +1,29 @@
+[
+    {
+        "_id": {
+            "$oid": "5fd21021d230812954b4b49a"
+        },
+        "name": "Jonathan",
+        "email": "jon@gmail.com",
+        "password": "123",
+        "isAdmin": true
+    },
+    {
+        "_id": {
+            "$oid": "5fd21f60d230812954b4b49b"
+        },
+        "name": "May",
+        "email": "may@gmail.com",
+        "password": "123",
+        "isAdmin": true
+    },
+    {
+        "_id": {
+            "$oid": "5fd21f82d230812954b4b49c"
+        },
+        "name": "Michael",
+        "email": "michael@gmail.com",
+        "password": "123",
+        "isAdmin": true
+    }
+]
