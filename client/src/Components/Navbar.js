@@ -19,9 +19,9 @@ const Navbar = () => {
 
   const authenticatedButtons = (
     <div className="navbar-container">
-      <p>Username: {user && user.name}</p>
+      <p style={{backgroundColor: 'darkblue', color: 'white'}}>Username: {user && user.name}</p>
       <a onClick={onLogout} href="/">
-        <p>Logout</p>
+        <p style={{backgroundColor: 'darkblue', color: 'white'}}>Logout</p>
       </a>
     </div>
   );
@@ -42,7 +42,7 @@ const Navbar = () => {
   );
 
   return (
-    <div>
+    <div className="navbar">
       <h2>
         {isAuthenticated ? authenticatedButtons : nonAuthenticatedButtons}
       </h2>

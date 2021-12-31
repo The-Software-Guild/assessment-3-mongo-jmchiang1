@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useRef } from "react";
 import BugContext from "../context/bug/bugContext";
 import "./CSS Styling/Bugs.css";
 import Countdown from "react-countdown";
-import moment from 'moment'
+import moment from "moment";
 
-const Bugs = ({ bug }) => {
+const Bugs = () => {
   const bugContext = useContext(BugContext);
   const { bugs, filtered, getBugs } = bugContext;
   const { filterBugs } = bugContext;
@@ -34,9 +34,31 @@ const Bugs = ({ bug }) => {
     const bugContext = useContext(BugContext);
     const { deleteBug, setCurrent, clearCurrent } = bugContext;
     const { _id, name, description, date } = bug; //take out the following params from bug model
-    
-    const Completionist = () => <span>Please resolve, its been 3 days!</span>;
 
+    //execute this function when timer ends
+    const Completionist = () => (
+      <span style={{ color: "red", fontWeight: "bold" }}>
+        Please resolve, its been 3 days!
+      </span>
+    );
+
+    //conditional render timer
+    const renderer = ({ days, hours, minutes, seconds, completed }) => {
+      if (completed) {
+        return <Completionist />;
+      } else {
+        return (
+          <div style={{ display: "flex" }}>
+            <p>
+              Days: {days} | Hours: {hours} | Miniutes: {minutes} | Seconds:{" "}
+              {seconds}
+            </p>
+          </div>
+        );
+      }
+    };
+
+    //delete single bug
     const onDelete = () => {
       deleteBug(_id);
       clearCurrent();
@@ -45,18 +67,25 @@ const Bugs = ({ bug }) => {
     return (
       //display name, description, and date
       <div className="bugs-list">
-        <h3>Name: {name}</h3>
-        <p>Description: {description}</p>
-        <p>Date Created: {moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a")}</p>
-        <p>Time until timer ends: {<Countdown date={ parseInt(moment(date).format('x')) + 259000000}>
-          <Completionist />
-          </Countdown>}
+        <h3> Name: {name}</h3>
+        <p> <span>Description:</span> {description}</p>
+        <p>
+          <span>Date Created:</span> {moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+        </p>
+        <p>
+          <span>Time until timer ends:{" "}</span>
+          {
+            <Countdown
+              date={parseInt(moment(date).format("x")) + 259000000}
+              renderer={renderer}
+            />
+          }
         </p>
         <div>
           {/* populates current bug data to form */}
-          <button onClick={() => setCurrent(bug)}>Edit</button>
+          <button className="edit-button" onClick={() => setCurrent(bug)}>Edit</button>
           {/* deletes current bug */}
-          <button onClick={onDelete}>Completed </button>
+          <button className="complete-button" onClick={onDelete}>Resolve</button>
         </div>
         {/* <Timer/> */}
       </div>

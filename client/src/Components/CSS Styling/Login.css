@@ -1,4 +1,6 @@
 .container {
 display: grid;
+/* flex-wrap: wrap; */
+justify-content: center;
 text-align: center;
 }

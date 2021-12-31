@@ -2,4 +2,11 @@
     display: flex;
     justify-content: space-evenly;
     margin: 1rem;
+    background-color: darkblue;
+}
+
+.navbar-container a {
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
 }

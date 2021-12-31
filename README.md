@@ -29,10 +29,10 @@ Within a Client folder create a font end application using React.js that allows 
 - [x] Date (should auto-fill with system date &time)
 - [x] Assignee
 
-- [ ] All Data created should be saved in MongoDB. And displayed in an INTERACTIVE table. I should be able to click on cells and interact with each bug
+- [x] All Data created should be saved in MongoDB. And displayed in an INTERACTIVE table. I should be able to click on cells and interact with each bug
 by seeing more details, leaving notes, adjusting due date, etc, ...etc.
-- [ ] Build a programming logic that every bug should be resolve in 3 days, after third the day the unresolved bug should be highlighted.
-- [ ] Add one more field to show the leftover days to fix the bug (Total time is 3 days from the day bug is assigned).
+- [x] Build a programming logic that every bug should be resolve in 3 days, after third the day the unresolved bug should be highlighted.
+- [x] Add one more field to show the leftover days to fix the bug (Total time is 3 days from the day bug is assigned).
 
 Step-4: Styling
 - [x] Make you entire application fully-styled and responsive per the past requirements.

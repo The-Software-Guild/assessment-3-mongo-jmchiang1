@@ -5,3 +5,11 @@
     margin-top: 1rem;
     padding: 1rem;
 }
+
+.edit-button:hover {
+background-color: yellow;
+}
+
+.complete-button:hover {
+background-color: green;
+}

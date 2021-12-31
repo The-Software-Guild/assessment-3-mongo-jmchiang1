@@ -1,9 +1,9 @@
 .home-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    grid-gap: 20px;
+    /* margin-left: 5rem;
+    margin-right: 5rem; */
 }
 
 .form {
