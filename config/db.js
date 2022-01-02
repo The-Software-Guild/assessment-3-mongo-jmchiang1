@@ -10,11 +10,7 @@ const connectDB = async () => {
             useFindAndModify: false,
             useUnifiedTopology: true
         });
-<<<<<<< HEAD
         console.log("MongoDB is Connected") //should see this in console if done correctly 
-=======
-        console.log("MongoDB is Connected")
->>>>>>> 6fce6247fe8645ab9a999fdf588195ef775aef78
     } catch (err) {
         console.error(err.message);
         process.exit(1);

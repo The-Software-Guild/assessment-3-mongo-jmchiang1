@@ -6,11 +6,6 @@ export const SET_CURRENT = 'SET_CURRENT';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 export const UPDATE_BUG = 'UPDATE_BUG';
 export const FILTER_BUGS = 'FILTER_BUGS';
-<<<<<<< HEAD
-=======
-export const CLEAR_BUGS = 'CLEAR_BUGS';
-export const CLEAR_FILTER = 'CLEAR_FILTER';
->>>>>>> 6fce6247fe8645ab9a999fdf588195ef775aef78
 export const BUG_ERROR = 'BUG_ERROR';
 
 //USER TYPES
