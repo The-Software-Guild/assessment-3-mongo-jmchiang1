@@ -1,24 +1,19 @@
-const connectDB = require('./Backend/config/db.js');
 const express = require('express');
-const dotenv  = require('dotenv');
-const userRoutes = require('./Backend/routes/userRoute.js');
-const bugRoutes = require('./Backend/routes/bugRoute.js');
-const authRoutes = require('./Backend/routes/authRoute.js');
+const connectDB = require('./config/db');
 
-//connect database
-connectDB()
+const app = express();
 
-//dotenv config
-dotenv.config()
+// Connect Database
+connectDB();
 
-const app = express()
+// Initialize Middleware
+app.use(express.json());
 
-//Creating API for user
-app.use('/users', userRoutes)
-app.use('/bugs', bugRoutes)
-app.use('/auth', authRoutes)
+// Bring in Routes
+app.use('/api/users', require('./server/routes/users'));
+app.use('/api/auth', require('./server/routes/auth'));
+app.use('/api/bugs', require('./server/routes/bugs'));
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
-//Express js listen method to run project on http://localhost:5000
-app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

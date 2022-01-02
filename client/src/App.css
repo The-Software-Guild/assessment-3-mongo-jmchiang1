@@ -1,0 +1,36 @@
+* {
+  background-color: lightgray;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input {
+  width: -webkit-fill-available;
+  height: 1.5rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+
+button {
+  width: -webkit-fill-available;
+  height: 2rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+span {
+  font-weight: bold;
+}
+
+h3 {
+  margin-top: 0;
+}

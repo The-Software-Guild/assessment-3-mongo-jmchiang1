@@ -1,0 +1,27 @@
+.bugs-list {
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.edit-button:hover {
+background-color: yellow;
+}
+
+.complete-button:hover {
+background-color: green;
+} 
+
+.edit-resolve-button {
+    display: flex;
+}
+
+.edit-button {
+    margin-top: 0;
+}
+
+.complete-button {
+    margin-top: 0;
+}
