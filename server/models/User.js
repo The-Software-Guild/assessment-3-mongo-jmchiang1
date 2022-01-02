@@ -14,7 +14,11 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+<<<<<<< HEAD
   date: { //need this for countdown timer in react section 
+=======
+  date: {
+>>>>>>> 6fce6247fe8645ab9a999fdf588195ef775aef78
     type: Date,
     default: Date.now,
   },

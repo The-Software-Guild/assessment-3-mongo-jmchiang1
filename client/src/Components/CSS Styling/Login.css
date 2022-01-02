@@ -1,5 +1,11 @@
 .container {
 display: grid;
+<<<<<<< HEAD
 justify-content: center;
 text-align: inherit;
+=======
+/* flex-wrap: wrap; */
+justify-content: center;
+text-align: center;
+>>>>>>> 6fce6247fe8645ab9a999fdf588195ef775aef78
 }
